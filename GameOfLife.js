@@ -42,15 +42,12 @@ countNeighbours = (N, M) => {
 updateCellValue = (N, M) => {
 
     const total = countNeighbours(N, M);
-    // cell with more than 4 or less then 3 neighbours dies. 1 => 0; 0 => 0
     if (total > 3 || total < 2) {
         return 0;
     }
-    // dead cell with 3 neighbours becomes alive. 0 => 1
     else if (activeArray[N][M] === 0 && total === 3) {
         return 1;
     }
-    // or returning its status back. 0 => 0; 1 => 1
     else {
         return activeArray[N][M];
     }
@@ -74,4 +71,3 @@ startGame = (N, M) => {
         console.log(inactiveArray)
     }, 1000)
 }
-startGame(10,10)
