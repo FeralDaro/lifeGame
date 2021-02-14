@@ -1,13 +1,13 @@
 let activeArray = [];
 let inactiveArray = [];
 
-function getRandomIntInclusive(min, max) {
+const getRandomIntInclusive = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
 }
 
-let arrCreate = (N, M) => {
+const arrCreate = (N, M) => {
     activeArray = [];
     for (let i = 0; i < N; i++) {
         activeArray[i] = [];
@@ -18,21 +18,21 @@ let arrCreate = (N, M) => {
     }
     inactiveArray = activeArray;
 }
-let arrToString = (array) =>{
+const arrToString = (array) =>{
     for(let i = 0; i<array.length; i++){
         let b = array[i].join(' ');
         console.log(b)
     }
 }
 
-setCellValueHelper = (N, M) => {
+const setCellValueHelper = (N, M) => {
     try {
         return activeArray[N][M];
     } catch {
         return 0;
     }
 };
-countNeighbours = (N, M) => {
+const countNeighbours = (N, M) => {
     let total_neighbours = 0;
     total_neighbours += setCellValueHelper(N - 1, M - 1);
     total_neighbours += setCellValueHelper(N - 1, M);
@@ -44,7 +44,7 @@ countNeighbours = (N, M) => {
     total_neighbours += setCellValueHelper(N + 1, M + 1);
     return total_neighbours;
 };
-updateCellValue = (N, M) => {
+const updateCellValue = (N, M) => {
 
     const total = countNeighbours(N, M);
     if (total > 3 || total < 2) {
@@ -58,7 +58,7 @@ updateCellValue = (N, M) => {
     }
 
 };
-updateLifeCycle = (N, M) => {
+const updateLifeCycle = (N, M) => {
 
     for (let i = 0; i < N; i++) {
         for (let j = 0; j < M; j++) {
@@ -68,7 +68,7 @@ updateLifeCycle = (N, M) => {
     activeArray = inactiveArray;
 
 };
-startGame = (N, M) => {
+const startGame = (N, M) => {
     arrCreate(N, M);
     console.log(inactiveArray)
     setInterval(()=>{
