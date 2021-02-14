@@ -18,7 +18,12 @@ let arrCreate = (N, M) => {
     }
     inactiveArray = activeArray;
 }
-
+let arrToString = (array) =>{
+    for(let i = 0; i<array.length; i++){
+        let b = array[i].join(' ');
+        console.log(b)
+    }
+}
 
 setCellValueHelper = (N, M) => {
     try {
@@ -68,6 +73,6 @@ startGame = (N, M) => {
     console.log(inactiveArray)
     setInterval(()=>{
         updateLifeCycle(N,M);
-        console.log(inactiveArray)
+        arrToString(inactiveArray)
     }, 1000)
 }
